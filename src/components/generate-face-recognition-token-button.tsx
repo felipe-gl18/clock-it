@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Mail } from "lucide-react";
 import { useEmployees } from "@/hooks/useEmployees";
 import { useState } from "react";
+import Loading from "./loading";
 
 export default function GenerateFaceRecognitionTokenButton() {
   const { sendFaceRecognitionTokenByEmail } = useEmployees();
@@ -27,8 +28,17 @@ export default function GenerateFaceRecognitionTokenButton() {
           variant="outline"
           className="cursor-pointer"
         >
-          <Mail />
-          {isSending ? "Sending..." : "Generate face recognition link"}
+          {isSending ? (
+            <div className="flex justify-center items-center gap-2">
+              <Loading />
+              <p> Sending...</p>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center gap-2">
+              <Mail />
+              <p>Generate face recognition link</p>
+            </div>
+          )}
         </Button>
       </TooltipTrigger>
       <TooltipContent>
