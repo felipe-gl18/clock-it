@@ -36,6 +36,7 @@ import { useFirebaseStorage } from "@/hooks/useFirebaseStorage";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { useState } from "react";
 import AuthenticatedUserWrapper from "./authenticated-user-wrapper";
+import { useLocation } from "react-router-dom";
 
 // Menu items.
 const items = [
@@ -59,9 +60,21 @@ const items = [
 export function AppSidebar() {
   const { user } = useAuthentication();
   const { logOut } = useFirebaseStorage();
+  const { pathname } = useLocation();
+
   const handleLogout = async () => await logOut();
 
   const [openUser, setOpenUser] = useState(false);
+
+  const isSelectedPath = (path: string) => {
+    const isSelected = path === pathname;
+    return [
+      "flex items-center gap-2 w-full px-3 py-2 rounded-md transition-colors",
+      isSelected
+        ? "bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-500"
+        : "text-gray-700 hover:bg-gray-100",
+    ].join(" ");
+  };
 
   return (
     <Sidebar>
@@ -73,8 +86,8 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
+                    <a href={item.url} className={isSelectedPath(item.url)}>
+                      <item.icon className="w-4 h-4" />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
