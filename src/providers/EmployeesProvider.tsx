@@ -53,8 +53,8 @@ export const EmployeesProvider = ({ children }: { children: ReactNode }) => {
     employees.forEach((employee) => {
       emailjs
         .send(
-          "service_i8ugxb4",
-          "template_3068jmo",
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           {
             to_name: employee.name,
             from_name: "ClockIt",
@@ -62,7 +62,7 @@ export const EmployeesProvider = ({ children }: { children: ReactNode }) => {
             link,
             email: employee.email,
           },
-          "fZn_kWz9d5oL8c-Bp"
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         )
         .then(() => {
           toast.success(`Email enviado para ${employee.name}`);
