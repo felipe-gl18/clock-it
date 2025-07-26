@@ -1,4 +1,26 @@
-# React + Typescript + Firebase + ShadcnUI + TailwindCSS
+# React + Typescript + Firebase + ShadcnUI + TailwindCSS + EmailJS
+
+## How to setup and start the project?
+
+- First, you need two things, an EmailJS account, and a Firebase Project (With Firestore Database, Storage and Authentication through email + password and google account)
+
+```env
+# EMAILJS CONFIGURATION
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+
+# FIREBASE CONFIGURATION
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_firebase_app_id
+```
+
+- Second, you just need to run **npm install**, then **npm run dev** to start the application on development environment
+
 
 This is a full client web application, with no backend. The application goal is to manage the employees
 
@@ -12,8 +34,7 @@ This is a full client web application, with no backend. The application goal is 
 ## How the application works ?
 
 After adding the employees, there is a feature of *"Generate face recognition link"*. Here you will send an email to all employees with a link
-
-Then the application will be able to do a face recognition, and register the time that the employee started to work, or stopped working
+The link will redirect to the application face recognition, where the employee will be recognized and after that, the employee is able to clock in or clock out
 
 <img width="1920" height="1080" alt="Captura de Tela (72)" src="https://github.com/user-attachments/assets/f485153e-c655-4838-944a-59beaf1278c2" />
 
