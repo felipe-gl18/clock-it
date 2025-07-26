@@ -1,3 +1,24 @@
+# React + Typescript + Firebase + ShadcnUI + TailwindCSS
+
+This is a full client web application, with no backend. The application goal is to manage the employees
+
+- First, the company owner needs to register through his google account or just email and password.
+<img width="1920" height="1080" alt="Captura de Tela (67)" src="https://github.com/user-attachments/assets/1c7a5a85-87d6-470f-bc58-69725dd90745" />
+
+  
+- Second, add all his employees, informations like name, email, phonenumber, and photo are required.
+<img width="1920" height="1080" alt="Captura de Tela (71)" src="https://github.com/user-attachments/assets/b0d3447f-ee96-4292-a879-a5462dc60167" />
+
+## How the application works ?
+
+After adding the employees, there is a feature of *"Generate face recognition link"*. Here you will send an email to all employees with a link
+
+Then the application will be able to do a face recognition, and register the time that the employee started to work, or stopped working
+
+<img width="1920" height="1080" alt="Captura de Tela (72)" src="https://github.com/user-attachments/assets/f485153e-c655-4838-944a-59beaf1278c2" />
+
+ 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
