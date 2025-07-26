@@ -19,7 +19,7 @@ type TChartData = {
 
 const chartConfig = {
   worked_hours: {
-    label: "Worked hours",
+    label: "Worked hours: ",
     color: "#2563eb",
   },
 } satisfies ChartConfig;
