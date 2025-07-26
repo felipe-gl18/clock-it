@@ -1,8 +1,8 @@
 import type { EmployeeWithId } from "@/contexts/EmployeesContext";
 import { useFirebaseStorage } from "@/hooks/useFirebaseStorage";
 import { useEffect, useState, type ChangeEvent } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Edit } from "lucide-react";
+import Avatar from "./avatar";
 
 export default function EmployeeAvatar({
   employee,
@@ -33,10 +33,7 @@ export default function EmployeeAvatar({
 
   return (
     <div className="w-fit relative">
-      <Avatar className="w-28 h-28 shadow-md">
-        <AvatarImage src={mediaURL} />
-        <AvatarFallback className="text-xl">CN</AvatarFallback>
-      </Avatar>
+      <Avatar className="w-24 h-24" img={mediaURL} />
       <label
         htmlFor="avatarUpload"
         className="absolute -right-1 -bottom-1 bg-slate-700 rounded-full p-2 text-white shadow-sm cursor-pointer hover:scale-105 transition-transform"
