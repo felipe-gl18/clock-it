@@ -12,6 +12,7 @@ import type { EmployeeWithId } from "@/contexts/EmployeesContext";
 import { useEmployeeTimeRecord } from "@/hooks/useEmployeeTimeRecord";
 import { useEffect, useState } from "react";
 import { Separator } from "./ui/separator";
+import Loading from "./loading";
 
 export default function Employee({ employee }: { employee: EmployeeWithId }) {
   const { handleMonthlyWorkedHoursAndMinutes, handleSalaryPerWorkedHours } =
@@ -21,11 +22,8 @@ export default function Employee({ employee }: { employee: EmployeeWithId }) {
     useState<{
       hours: number;
       minutes: number;
-    }>({
-      hours: 0,
-      minutes: 0,
-    });
-  const [employeeSalary, setEmployeeSalary] = useState<number>(0);
+    } | null>(null);
+  const [employeeSalary, setEmployeeSalary] = useState<number | null>(null);
 
   function handleWhatsAppRedirect() {
     window.open(`https://wa.me/${employee.phone}`, "_blank");
@@ -37,8 +35,10 @@ export default function Employee({ employee }: { employee: EmployeeWithId }) {
         employee.id
       );
       const salary = await handleSalaryPerWorkedHours(hoursAndMinutes.hours);
-      setEmployeeWorkedHoursAndMinutes(hoursAndMinutes);
-      setEmployeeSalary(salary);
+      setEmployeeWorkedHoursAndMinutes(
+        hoursAndMinutes || { hours: 0, minutes: 0 }
+      );
+      setEmployeeSalary(salary || 0);
     };
     fetchWorkedHours();
   }, [employee.id]);
@@ -60,23 +60,29 @@ export default function Employee({ employee }: { employee: EmployeeWithId }) {
           <p className="text-sm">{employee.phone}</p>
         </div>
         <Separator />
-        <div className="flex space-x-4 items-center">
-          <ClockIcon />
-          <p className="font-bold text-gray-400 text-sm">
-            {employeeWorkedHoursAndMinutes.hours} hora(s) e{" "}
-            {employeeWorkedHoursAndMinutes.minutes} minuto(s) trabalhados
-          </p>
-        </div>
-        <div className="flex space-x-4 items-center">
-          <DollarSign />
-          <p className="font-bold text-gray-400 text-sm">
-            {employeeSalary.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </p>
-        </div>
-        <Separator />
+        {employeeWorkedHoursAndMinutes && employeeSalary ? (
+          <>
+            <div className="flex space-x-4 items-center">
+              <ClockIcon />
+              <p className="font-bold text-gray-400 text-sm">
+                {employeeWorkedHoursAndMinutes!.hours} hora(s) e{" "}
+                {employeeWorkedHoursAndMinutes!.minutes} minuto(s) trabalhados
+              </p>
+            </div>
+            <div className="flex space-x-4 items-center">
+              <DollarSign />
+              <p className="font-bold text-gray-400 text-sm">
+                {employeeSalary!.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </p>
+            </div>
+            <Separator />
+          </>
+        ) : (
+          <Loading />
+        )}
         <div>
           <Button
             onClick={handleWhatsAppRedirect}

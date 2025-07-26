@@ -6,22 +6,17 @@ import {
   TrashIcon,
   UserIcon,
 } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { useFirebaseStorage } from "@/hooks/useFirebaseStorage";
+import Avatar from "./avatar";
 
 export default function AuthenticatedUser({ user }: { user: User }) {
   const { deleteUser } = useFirebaseStorage();
   return (
     <div className="flex flex-col justify-center items-center space-y-8">
-      <Avatar className="w-28 h-28 shadow-md">
-        <AvatarImage src={user.photoURL!} />
-        <AvatarFallback className="text-xl">
-          {user.displayName!.charAt(0)}
-        </AvatarFallback>
-      </Avatar>
+      <Avatar img={user.photoURL} className="w-24 h-24" />
       <div className="w-full space-y-6 px-6">
         <div className="flex space-x-4">
           <UserIcon />
