@@ -120,7 +120,10 @@ export const useFirebaseStorage = () => {
     try {
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
-      console.error("Something went wrong: ", error);
+      console.error(
+        "Something went wrong when trying to sign in with google: ",
+        error
+      );
     }
   }
 
