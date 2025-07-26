@@ -1,8 +1,13 @@
 # React + Typescript + Firebase + ShadcnUI + TailwindCSS + EmailJS
 
+## What is the project about?
+
+This is a full client web application. The main goal is to manage the employees, the difference is that the project
+includes face recognition to recognize all the user employees
+
 ## How to setup and start the project?
 
-- First, you need two things, an EmailJS account, and a Firebase Project (With Firestore Database, Storage and Authentication through email + password and google account)
+- First, you need two things, an EmailJS account, and a Firebase Project (With Firestore Database, Storage and Authentication through email + password and google account). Then create a .env file as follow:
 
 ```env
 # EMAILJS CONFIGURATION
@@ -21,8 +26,7 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 
 - Second, you just need to run **npm install**, then **npm run dev** to start the application on development environment
 
-
-This is a full client web application, with no backend. The application goal is to manage the employees
+## How to use ?
 
 - First, the company owner needs to register through his google account or just email and password.
 <img width="1920" height="1080" alt="Captura de Tela (67)" src="https://github.com/user-attachments/assets/1c7a5a85-87d6-470f-bc58-69725dd90745" />
@@ -31,12 +35,13 @@ This is a full client web application, with no backend. The application goal is 
 - Second, add all his employees, informations like name, email, phonenumber, and photo are required.
 <img width="1920" height="1080" alt="Captura de Tela (71)" src="https://github.com/user-attachments/assets/b0d3447f-ee96-4292-a879-a5462dc60167" />
 
-## How the application works ?
 
-After adding the employees, there is a feature of *"Generate face recognition link"*. Here you will send an email to all employees with a link
-The link will redirect to the application face recognition, where the employee will be recognized and after that, the employee is able to clock in or clock out
-
+- Third, after adding the employees, there is a feature of *"Generate face recognition link"*. Here you will send an email to all employees with a link
+The link will redirect to the application face recognition.
 <img width="1920" height="1080" alt="Captura de Tela (72)" src="https://github.com/user-attachments/assets/f485153e-c655-4838-944a-59beaf1278c2" />
+
+
+- Fourth, the employee should access the link sent by email, he will be redirected to the face recognition page, after that open the camera, and wait the face recognition detect his face, and unlock the option to clock in or clock out
 
  
 
