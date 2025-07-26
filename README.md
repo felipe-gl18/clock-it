@@ -32,7 +32,7 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 <img width="1920" height="1080" alt="Captura de Tela (67)" src="https://github.com/user-attachments/assets/1c7a5a85-87d6-470f-bc58-69725dd90745" />
 
   
-- Second, add all his employees, informations like name, email, phonenumber, and photo are required.
+- Second, add all his employees, information like name, email, phonenumber, and photo are required.
 <img width="1920" height="1080" alt="Captura de Tela (71)" src="https://github.com/user-attachments/assets/b0d3447f-ee96-4292-a879-a5462dc60167" />
 
 
@@ -41,8 +41,19 @@ The link will redirect to the application face recognition.
 <img width="1920" height="1080" alt="Captura de Tela (72)" src="https://github.com/user-attachments/assets/f485153e-c655-4838-944a-59beaf1278c2" />
 
 
-- Fourth, the employee should access the link sent by email, he will be redirected to the face recognition page, after that open the camera, and wait the face recognition detect his face, and unlock the option to clock in or clock out
+- Fourth, the employee should access the link sent by email, he'll be redirected to the face recognition page, after that, open the camera, and wait the face recognition detects his face, and unlock the option to clock in or clock out
+<img width="1920" height="1080" alt="Captura de Tela (73)" src="https://github.com/user-attachments/assets/81a30b8e-2c30-43de-b299-d569b70f31a7" />
 
+
+## Features
+
+- Sign in or Sign up through email + password, or google account
+- Create, read, update, delete employee
+- Face recognition
+- Email service
+- Graphics to analyise and compare worked hours between employees
+- Employees time registers table
+- Employees table
  
 
 # React + TypeScript + Vite
