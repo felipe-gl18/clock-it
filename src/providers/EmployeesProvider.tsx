@@ -50,9 +50,9 @@ export const EmployeesProvider = ({ children }: { children: ReactNode }) => {
 
     if (!employees) return;
 
-    employees.forEach((employee) => {
-      emailjs
-        .send(
+    try {
+      const emailPromises = employees.map((employee) => {
+        emailjs.send(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           {
@@ -63,18 +63,14 @@ export const EmployeesProvider = ({ children }: { children: ReactNode }) => {
             email: employee.email,
           },
           import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        )
-        .then(() => {
-          toast.success(`Email enviado para ${employee.name}`);
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            toast.error(`Erro para ${employee.name}: ${error.message}`);
-          } else {
-            toast.error(`Erro ao enviar para ${employee.name}`);
-          }
-        });
-    });
+        );
+      });
+
+      await Promise.all(emailPromises);
+      toast.success("Face recognition token sent to all employees' emails.");
+    } catch (error) {
+      toast.error(`Failed to send emails: ${error}`);
+    }
   }
 
   return (
